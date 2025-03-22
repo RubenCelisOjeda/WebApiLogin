@@ -1,11 +1,11 @@
 ﻿using ApiLogin.DDD.Domain.Repository;
 
-namespace ApiLogin.DDD.Application.Services
+namespace ApiLogin.DDD.Application.Services.User
 {
     /// <summary>
     /// User Service
     /// </summary>
-    public class UserService
+    public class UserService : IUserService
     {
         #region [Variables]
         private readonly IUserRepository _userRepository;
@@ -19,9 +19,8 @@ namespace ApiLogin.DDD.Application.Services
         #endregion
 
         #region [Methods]
-        public void AddProduct(string name, decimal price)
+        public void AddUser()
         {
-
             _userRepository.AddUser();
         }
         #endregion

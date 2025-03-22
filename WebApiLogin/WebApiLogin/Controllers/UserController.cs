@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiLogin.DDD.Application.Dto.User.Request.AddUser;
+using ApiLogin.DDD.Application.Services.User;
+using ApiLogin.DDD.Transversal.Utils;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ApiLogin.Controllers
 {
@@ -8,7 +11,7 @@ namespace ApiLogin.Controllers
     {
         #region [Variables]
         private readonly ILogger<UserController> _logger;
-        //private readonly IAuthService _authService;
+        private readonly IUserService _userService;
         #endregion
 
         #region [Constructor]
@@ -17,10 +20,10 @@ namespace ApiLogin.Controllers
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="authService"></param>
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger , UserService userService)
         {
             _logger = logger;
-            //_authService = authService;
+            _userService = userService;
         }
         #endregion
 
@@ -45,15 +48,14 @@ namespace ApiLogin.Controllers
         //    //return Ok(responseData);
         //}
 
-        //[HttpPost]
-        //[Route("AddUser")]
-        //public async Task<IActionResult> AddUser([FromBody] AuthRequest pEntidad)
-        //{
-        //    BaseResponse<object> responseData = null;
-
-        //    //var responseData = await _managerService.ExistsEmail(email);
-        //    //return Ok(responseData);
-        //}
+        [HttpPost]
+        [Route("AddUser")]
+        public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+        {
+            BaseResponse<object> response = null;
+             _userService.AddUser();
+            return Ok(response);
+        }
 
         //[HttpPost]
         //[Route("UpdateUser")]
