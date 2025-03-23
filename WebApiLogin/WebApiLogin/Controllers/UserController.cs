@@ -10,44 +10,17 @@ namespace ApiLogin.Controllers
     public class UserController : BaseController
     {
         #region [Variables]
-        private readonly ILogger<UserController> _logger;
         private readonly IUserService _userService;
         #endregion
 
         #region [Constructor]
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="authService"></param>
-        public UserController(ILogger<UserController> logger , UserService userService)
+        public UserController( UserService userService)
         {
-            _logger = logger;
             _userService = userService;
         }
         #endregion
 
         #region [Apis]
-        //[HttpGet]
-        //[Route("GetUser")]
-        //public async Task<IActionResult> GetUser([FromBody] AuthRequest pEntidad)
-        //{
-        //    BaseResponse<object> responseData = null;
-
-        //    //var responseData = await _managerService.ExistsEmail(email);
-        //    //return Ok(responseData);
-        //}
-
-        //[HttpPost]
-        //[Route("GetAllUser")]
-        //public async Task<IActionResult> GetAllUser([FromBody] AuthRequest pEntidad)
-        //{
-        //    BaseResponse<object> responseData = null;
-
-        //    //var responseData = await _managerService.ExistsEmail(email);
-        //    //return Ok(responseData);
-        //}
-
         [HttpPost]
         [Route("AddUser")]
         public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)

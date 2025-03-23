@@ -25,11 +25,6 @@ namespace ApiLogin.DDD.Infraestructure.Configuration.Connection
         {
             get { return GetConnection(_configuration.GetConnectionString("BDSeguridad")); }
         }
-
-        public IDbConnection GetConnectionSCM
-        {
-            get { return GetConnection(_configuration.GetConnectionString("BDSCM")); }
-        }
         #endregion
 
         #region [Methods]

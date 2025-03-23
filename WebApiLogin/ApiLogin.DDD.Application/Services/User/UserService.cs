@@ -1,4 +1,5 @@
 ﻿using ApiLogin.DDD.Domain.Repository;
+using Microsoft.Extensions.Logging;
 
 namespace ApiLogin.DDD.Application.Services.User
 {
@@ -8,12 +9,14 @@ namespace ApiLogin.DDD.Application.Services.User
     public class UserService : IUserService
     {
         #region [Variables]
+        private readonly ILogger<UserService> _logger;
         private readonly IUserRepository _userRepository;
         #endregion
 
         #region [Constructor]
-        public UserService(IUserRepository userRepository)
+        public UserService(ILogger<UserService> logger, IUserRepository userRepository)
         {
+            _logger = logger;
             _userRepository = userRepository;
         }
         #endregion
@@ -21,7 +24,14 @@ namespace ApiLogin.DDD.Application.Services.User
         #region [Methods]
         public void AddUser()
         {
-            _userRepository.AddUser();
+            try
+            {
+                _userRepository.AddUser();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
         }
         #endregion
     }

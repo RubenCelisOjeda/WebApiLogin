@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ApiLogin.DDD.Domain\ApiLogin.DDD.Domain.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Infraestructure.Configuration\ApiLogin.DDD.Infraestructure.Configuration.csproj" />
   </ItemGroup>
 
 </Project>

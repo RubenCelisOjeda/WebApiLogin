@@ -11,10 +11,12 @@ namespace ApiLogin.DDD.Transversal.Jwt
         /// <summary>
         /// Metodo que genera un jwt para su respectiva sesion.
         /// </summary>
+        /// <param name="_configuration"></param>
+        /// <param name="pUsername"></param>
         /// <returns></returns>
         public static string CreateToken(IConfiguration _configuration, string pUsername)
         {
-            //Get the  configuration appseting.json
+            //Get the configuration appseting.json
             var key = _configuration["Jwt:Key"];
             var audienceToken = _configuration["Jwt:AudienceToken"];
             var issuerToken = _configuration["Jwt:IssuerToken"];
@@ -38,6 +40,7 @@ namespace ApiLogin.DDD.Transversal.Jwt
                 expires: DateTime.UtcNow.AddMinutes(Convert.ToInt32(expireToken)),
                 signingCredentials: signingCredentials);
 
+            //Token
             var jwtTokenString = tokenHandler.WriteToken(jwtSecurityToken);
 
             return jwtTokenString;
