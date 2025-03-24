@@ -1,6 +1,5 @@
 ﻿using ApiLogin.DDD.Application.Dto.User.Request.AddUser;
 using ApiLogin.DDD.Application.Services.User;
-using ApiLogin.DDD.Transversal.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiLogin.Controllers
@@ -23,10 +22,9 @@ namespace ApiLogin.Controllers
         #region [Apis]
         [HttpPost]
         [Route("AddUser")]
-        public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+        public async Task<IActionResult> AddUser([FromBody] AddUserRequestDto request)
         {
-            BaseResponse<object> response = null;
-             _userService.AddUser();
+            var response = await _userService.AddUser(request);
             return Ok(response);
         }
 

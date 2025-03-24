@@ -1,11 +1,9 @@
-﻿using ApiLogin.DDD.Domain.Repository;
+﻿using ApiLogin.DDD.Application.Dto.User.Request.AddUser;
+using ApiLogin.DDD.Domain.Repository;
 using Microsoft.Extensions.Logging;
 
 namespace ApiLogin.DDD.Application.Services.User
 {
-    /// <summary>
-    /// User Service
-    /// </summary>
     public class UserService : IUserService
     {
         #region [Variables]
@@ -22,16 +20,23 @@ namespace ApiLogin.DDD.Application.Services.User
         #endregion
 
         #region [Methods]
-        public void AddUser()
+        public async Task<int> AddUser(AddUserRequestDto request)
         {
             try
             {
-                _userRepository.AddUser();
+                //1.Validation
+
+                //2.Execution
+                var response = await _userRepository.AddUser(null);
+
+                //3.Response
+
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
             }
+            return 0;
         }
         #endregion
     }

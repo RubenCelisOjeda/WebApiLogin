@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.20" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.16" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
@@ -14,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiLogin.DDD.Application\ApiLogin.DDD.Application.csproj" />
     <ProjectReference Include="..\ApiLogin.DDD.Infraestructure.Configuration\ApiLogin.DDD.Infraestructure.Configuration.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Transversal.AutoMapper\ApiLogin.DDD.Transversal.AutoMapper.csproj" />
     <ProjectReference Include="..\ApiLogin.DDD.Transversal\ApiLogin.DDD.Transversal.csproj" />
   </ItemGroup>
 

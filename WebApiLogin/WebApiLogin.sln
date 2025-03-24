@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.ApiGateway", "2.ApiGatewa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{033A7CEF-A45D-4B2D-81A0-7F69551F3AC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiLogin.DDD.Transversal.AutoMapper", "ApiLogin.DDD.Transversal.AutoMapper\ApiLogin.DDD.Transversal.AutoMapper.csproj", "{6845769E-36A3-4E9F-A320-7AC9CDE3520E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{1C9FC647-C574-4891-BFD4-E1606983CFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9FC647-C574-4891-BFD4-E1606983CFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9FC647-C574-4891-BFD4-E1606983CFEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6845769E-36A3-4E9F-A320-7AC9CDE3520E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6845769E-36A3-4E9F-A320-7AC9CDE3520E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6845769E-36A3-4E9F-A320-7AC9CDE3520E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6845769E-36A3-4E9F-A320-7AC9CDE3520E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{1C9FC647-C574-4891-BFD4-E1606983CFEE} = {B797CB57-AA5F-4D8F-B80E-9FCBF52ABFC5}
 		{B797CB57-AA5F-4D8F-B80E-9FCBF52ABFC5} = {9361C287-A427-43C3-80A3-08662CE3CD86}
 		{033A7CEF-A45D-4B2D-81A0-7F69551F3AC9} = {3A46E5B5-2562-41EE-AF54-48261D547736}
+		{6845769E-36A3-4E9F-A320-7AC9CDE3520E} = {3C0F3ABD-BB49-44FD-A8F3-077B5A1AE063}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D77FF1AA-EBC9-423F-9E8A-01854AC54C17}
