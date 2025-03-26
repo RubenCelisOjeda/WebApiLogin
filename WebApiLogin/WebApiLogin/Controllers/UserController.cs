@@ -13,7 +13,7 @@ namespace ApiLogin.Controllers
         #endregion
 
         #region [Constructor]
-        public UserController( UserService userService)
+        public UserController(IUserService userService)
         {
             _userService = userService;
         }

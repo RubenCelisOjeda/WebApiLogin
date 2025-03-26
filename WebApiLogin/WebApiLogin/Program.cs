@@ -1,4 +1,7 @@
+using ApiLogin.DDD.Application.Services.User;
+using ApiLogin.DDD.Domain.Repository;
 using ApiLogin.DDD.Infraestructure.Configuration.Connection;
+using ApiLogin.DDD.Infraestructure.Dapper.Repository;
 using ApiLogin.DDD.Transversal.AutoMapper.AutoMapper;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,7 +18,8 @@ builder.Services.AddSwaggerGen();
 
 #region [AddRegistration]
 builder.Services.AddSingleton<IConnectionFactory, ConnectionFactory>();
-builder.Services.AddSingleton<IConnectionFactory, ConnectionFactory>();
+builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
 #endregion
 
 #region [Log]
@@ -23,7 +27,6 @@ builder.Services.AddLogging(l =>
 {
     //l.SetMinimumLevel(LogLevel.Information);
     //l.AddNLog("Log/NLog.config");
-
 });
 #endregion
 

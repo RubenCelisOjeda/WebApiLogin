@@ -23,11 +23,12 @@ namespace ApiLogin.DDD.Infraestructure.Configuration.Connection
         #region [Interfaces]
         public IDbConnection GetConnectionSeguridad
         {
-            get { return GetConnection(_configuration.GetConnectionString("BDSeguridad")); }
+            get { return GetConnection(_configuration.GetConnectionString("DB_Login")); }
         }
         #endregion
 
         #region [Methods]
+
         public IDbConnection GetConnection(string pDataBase)
         {
             var connection = new SqlConnection();
