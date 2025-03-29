@@ -40,7 +40,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                 #endregion
 
                 #region [Execute]
-                var response = await connection.QueryFirstOrDefaultAsync<int>(procedure, parameters, commandType: CommandType.Text);
+                var response = await connection.ExecuteAsync(procedure, parameters, commandType: CommandType.Text);
                 return response;
                 #endregion
             }

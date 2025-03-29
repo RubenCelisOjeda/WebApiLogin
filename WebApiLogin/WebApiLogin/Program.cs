@@ -6,6 +6,7 @@ using ApiLogin.DDD.Transversal.AutoMapper.AutoMapper;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using NLog.Extensions.Logging;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,8 +26,8 @@ builder.Services.AddSingleton<IUserRepository, UserRepository>();
 #region [Log]
 builder.Services.AddLogging(l =>
 {
-    //l.SetMinimumLevel(LogLevel.Information);
-    //l.AddNLog("Log/NLog.config");
+    l.SetMinimumLevel(LogLevel.Information);
+    l.AddNLog("NLog.config");
 });
 #endregion
 
@@ -53,12 +54,12 @@ builder.Services.AddSwaggerGen(options =>
 
     options.SwaggerDoc(groupName, new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = $"API Seguridad {groupName}",
+        Title = $"API Login {groupName}",
         Version = groupName,
-        Description = "API Seguridad",
+        Description = "API Login",
         Contact = new Microsoft.OpenApi.Models.OpenApiContact
         {
-            Name = "API Seguridad",
+            Name = "API Login",
             Email = string.Empty,
             Url = new System.Uri("https://foo.com/"),
         }
@@ -115,6 +116,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

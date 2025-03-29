@@ -1,6 +1,7 @@
 ﻿using ApiLogin.DDD.Application.Dto.User.Request.AddUser;
 using ApiLogin.DDD.Domain.Entities.User.Request.AddUser;
 using ApiLogin.DDD.Domain.Repository;
+using ApiLogin.DDD.Transversal.Utils;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 
@@ -24,21 +25,124 @@ namespace ApiLogin.DDD.Application.Services.User
         #endregion
 
         #region [Methods]
-        public async Task<int> AddUser(AddUserRequestDto request)
+        public async Task<BaseResponse<int>> AddUser(AddUserRequestDto request)
         {
+            BaseResponse<int> baseResponse = null;
+
             try
             {
-                //1.Validation
                 var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
 
-                //2.Execution
                 var response = await _userRepository.AddUser(mapperRequest);
+
+                if (response > 0)
+                    baseResponse = BaseResponse<int>.BaseResponseSuccess(response);
+                else
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(response);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
+
+                baseResponse = BaseResponse<int>.BaseResponseError(ex.Message);
             }
-            return 0;
+            return baseResponse;
+        }
+
+        public async Task<BaseResponse<int>> AddUser(AddUserRequestDto request)
+        {
+            BaseResponse<int> baseResponse = null;
+
+            try
+            {
+                var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
+
+                var response = await _userRepository.AddUser(mapperRequest);
+
+                if (response > 0)
+                    baseResponse = BaseResponse<int>.BaseResponseSuccess(response);
+                else
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                baseResponse = BaseResponse<int>.BaseResponseError(ex.Message);
+            }
+            return baseResponse;
+        }
+
+        public async Task<BaseResponse<int>> AddUser(AddUserRequestDto request)
+        {
+            BaseResponse<int> baseResponse = null;
+
+            try
+            {
+                var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
+
+                var response = await _userRepository.AddUser(mapperRequest);
+
+                if (response > 0)
+                    baseResponse = BaseResponse<int>.BaseResponseSuccess(response);
+                else
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                baseResponse = BaseResponse<int>.BaseResponseError(ex.Message);
+            }
+            return baseResponse;
+        }
+
+        public async Task<BaseResponse<int>> AddUser(AddUserRequestDto request)
+        {
+            BaseResponse<int> baseResponse = null;
+
+            try
+            {
+                var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
+
+                var response = await _userRepository.AddUser(mapperRequest);
+
+                if (response > 0)
+                    baseResponse = BaseResponse<int>.BaseResponseSuccess(response);
+                else
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                baseResponse = BaseResponse<int>.BaseResponseError(ex.Message);
+            }
+            return baseResponse;
+        }
+
+        public async Task<BaseResponse<int>> AddUser(AddUserRequestDto request)
+        {
+            BaseResponse<int> baseResponse = null;
+
+            try
+            {
+                var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
+
+                var response = await _userRepository.AddUser(mapperRequest);
+
+                if (response > 0)
+                    baseResponse = BaseResponse<int>.BaseResponseSuccess(response);
+                else
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                baseResponse = BaseResponse<int>.BaseResponseError(ex.Message);
+            }
+            return baseResponse;
         }
         #endregion
     }

@@ -18,7 +18,7 @@ CREATE TABLE sis.Usuarios (
 	Email VARCHAR(100) NULL,
     DateCreated DATETIME NULL,
 	DateModify DATETIME NULL,
-	Status int
+	Status int NULL
 );
 GO
 

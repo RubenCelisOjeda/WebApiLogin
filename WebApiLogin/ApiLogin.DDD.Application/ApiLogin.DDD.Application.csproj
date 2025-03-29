@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dto\User\Response\" />
+    <Folder Include="Dto\User\Request\Base\" />
+    <Folder Include="Dto\User\Response\Base\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiLogin.DDD.Domain\ApiLogin.DDD.Domain.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Transversal\ApiLogin.DDD.Transversal.csproj" />
   </ItemGroup>
 
 </Project>
