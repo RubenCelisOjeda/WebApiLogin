@@ -26,18 +26,18 @@ namespace ApiLogin.Controllers
         #region [Apis]
 
         [HttpPost]
-        [Route("AddUser")]
+        [Route("GetUser")]
         public async Task<IActionResult> GetUser([FromBody] GetUserRequestDto request)
         {
-            var response = await _userService.AddUser(request);
+            var response = await _userService.GetUser(request);
             return Ok(response);
         }
 
         [HttpPost]
-        [Route("AddUser")]
+        [Route("GetAllUser")]
         public async Task<IActionResult> GetAllUser([FromBody] GetAllUserRequestDto request)
         {
-            var response = await _userService.AddUser(request);
+            var response = await _userService.GetAllUser(request);
             return Ok(response);
         }
 
@@ -53,7 +53,7 @@ namespace ApiLogin.Controllers
         [Route("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequestDto request)
         {
-            var response = await _userService.AddUser(request);
+            var response = await _userService.UpdateUser(request);
             return Ok(response);
         }
 
@@ -61,7 +61,7 @@ namespace ApiLogin.Controllers
         [Route("DeleteUser")]
         public async Task<IActionResult> DeleteUser([FromBody] DeleteUserRequestDto request)
         {
-            var response = await _userService.AddUser(request);
+            var response = await _userService.DeleteUser(request);
             return Ok(response);
         }
 
