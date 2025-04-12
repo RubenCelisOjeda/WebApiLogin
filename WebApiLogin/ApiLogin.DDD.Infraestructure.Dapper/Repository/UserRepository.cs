@@ -3,6 +3,8 @@ using ApiLogin.DDD.Domain.Entities.User.Request.DeleteUser;
 using ApiLogin.DDD.Domain.Entities.User.Request.GetAllUser;
 using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
 using ApiLogin.DDD.Domain.Entities.User.Request.UpdateUser;
+using ApiLogin.DDD.Domain.Entities.User.Response.GetAllUser;
+using ApiLogin.DDD.Domain.Entities.User.Response.GetUser;
 using ApiLogin.DDD.Domain.Repository;
 using ApiLogin.DDD.Infraestructure.Configuration.Connection;
 using Dapper;
@@ -24,53 +26,52 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
         #endregion
 
         #region [Methods]
-        public async Task<int> GetUser(GetUserRequestEntities request)
+        public async Task<GetUserResponseEntities> GetUser(GetUserRequestEntities request)
         {
             using (var connection = _configuration.GetConnectionSeguridad)
             {
                 #region [Query]
-                const string procedure = @"INSERT INTO sis.Usuarios (UserName, Password, Email, DateCreated, DateModify, Status)
-                                           VALUES (@pUserName, @pPassword, @pEmail, GETDATE(), NULL, @pStatus);";
+                const string procedure = @"SELECT [Id], [UserName], [Password], [Email], [DateCreated], [DateModify], [Status]
+                                           FROM sis.Usuarios
+                                           WHERE Id = @pIdUser";
                 #endregion
 
                 #region [Parameters]
                 var parameters = new DynamicParameters(new
                 {
-                    //pUserName = request.UserName,
-                    //pPassword = request.Password,
-                    //pEmail = request.Email,
-                    //pStatus = request.Status
+                    pIdUser = request.IdUser
                 });
                 #endregion
 
                 #region [Execute]
-                var response = await connection.ExecuteAsync(procedure, parameters, commandType: CommandType.Text);
+                var response = await connection.QueryFirstOrDefaultAsync<GetUserResponseEntities>(procedure, parameters, commandType: CommandType.Text);
                 return response;
                 #endregion
             }
         }
 
-        public async Task<int> GetAllUser(GetAllUserRequestEntities request)
+        public async Task<IEnumerable<GetAllUserResponseEntities>> GetAllUser(GetAllUserRequestEntities request)
         {
             using (var connection = _configuration.GetConnectionSeguridad)
             {
                 #region [Query]
-                const string procedure = @"INSERT INTO sis.Usuarios (UserName, Password, Email, DateCreated, DateModify, Status)
-                                           VALUES (@pUserName, @pPassword, @pEmail, GETDATE(), NULL, @pStatus);";
+                const string procedure = @"SELECT [Id], [UserName], [Password], [Email], [DateCreated], [DateModify], [Status]
+                                           FROM sis.Usuarios
+                                           ORDER BY [Id]  -- Es necesario ordenar para una paginación consistente
+                                           OFFSET @Offset ROWS 
+                                           FETCH NEXT @PageSize ROWS ONLY";
                 #endregion
 
                 #region [Parameters]
                 var parameters = new DynamicParameters(new
                 {
-                    //pUserName = request.UserName,
-                    //pPassword = request.Password,
-                    //pEmail = request.Email,
-                    //pStatus = request.Status
+                    Offset = (request.PageNumber - 1) * request.PageSize,
+                    PageSize = request.PageSize
                 });
                 #endregion
 
                 #region [Execute]
-                var response = await connection.ExecuteAsync(procedure, parameters, commandType: CommandType.Text);
+                var response = await connection.QueryAsync<GetAllUserResponseEntities>(procedure, parameters, commandType: CommandType.Text);
                 return response;
                 #endregion
             }
@@ -82,7 +83,8 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
             {
                 #region [Query]
                 const string procedure = @"INSERT INTO sis.Usuarios (UserName, Password, Email, DateCreated, DateModify, Status)
-                                           VALUES (@pUserName, @pPassword, @pEmail, GETDATE(), NULL, @pStatus);";
+                                           VALUES (@pUserName, @pPassword, @pEmail, GETDATE(), NULL, @pStatus);
+                                           SELECT CAST(SCOPE_IDENTITY() AS INT);";
                 #endregion
 
                 #region [Parameters]
@@ -96,7 +98,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                 #endregion
 
                 #region [Execute]
-                var response = await connection.ExecuteAsync(procedure, parameters, commandType: CommandType.Text);
+                var response = await connection.ExecuteScalarAsync<int>(procedure, parameters, commandType: CommandType.Text);
                 return response;
                 #endregion
             }
@@ -107,17 +109,22 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
             using (var connection = _configuration.GetConnectionSeguridad)
             {
                 #region [Query]
-                const string procedure = @"INSERT INTO sis.Usuarios (UserName, Password, Email, DateCreated, DateModify, Status)
-                                           VALUES (@pUserName, @pPassword, @pEmail, GETDATE(), NULL, @pStatus);";
+                const string procedure = @"UPDATE sis.Usuarios SET UserName = @pUserName,
+                                                                   Password = @pEmail,
+                                                                   DateModify = @pDateModify,
+                                                                   Status = @pStatus
+
+                                                               WHERE IdUser = @pIdUser";
                 #endregion
 
                 #region [Parameters]
                 var parameters = new DynamicParameters(new
                 {
-                    //pUserName = request.UserName,
-                    //pPassword = request.Password,
-                    //pEmail = request.Email,
-                    //pStatus = request.Status
+                    pIdUser = request.IdUser,
+                    pUserName = request.UserName,
+                    pPassword = request.Password,
+                    pEmail = request.Email,
+                    pStatus = request.Status
                 });
                 #endregion
 
@@ -133,17 +140,13 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
             using (var connection = _configuration.GetConnectionSeguridad)
             {
                 #region [Query]
-                const string procedure = @"INSERT INTO sis.Usuarios (UserName, Password, Email, DateCreated, DateModify, Status)
-                                           VALUES (@pUserName, @pPassword, @pEmail, GETDATE(), NULL, @pStatus);";
+                const string procedure = @"DELETE FROM sis.Usuarios WHERE IdUser = @pIdUser";
                 #endregion
 
                 #region [Parameters]
                 var parameters = new DynamicParameters(new
                 {
-                    //pUserName = request.UserName,
-                    //pPassword = request.Password,
-                    //pEmail = request.Email,
-                    //pStatus = request.Status
+                    pIdUser = request.IdUser
                 });
                 #endregion
 

@@ -2,6 +2,6 @@
 {
     public class DeleteUserRequestEntities
     {
-
+        public int IdUser { get; set; }
     }
 }

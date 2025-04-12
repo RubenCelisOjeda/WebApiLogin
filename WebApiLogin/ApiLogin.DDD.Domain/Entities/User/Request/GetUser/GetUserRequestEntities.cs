@@ -2,6 +2,6 @@
 {
     public class GetUserRequestEntities
     {
-
+        public int IdUser {  get; set; }
     }
 }
