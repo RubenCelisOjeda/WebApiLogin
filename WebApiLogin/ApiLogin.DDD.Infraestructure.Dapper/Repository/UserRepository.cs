@@ -114,7 +114,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                                                                    DateModify = @pDateModify,
                                                                    Status = @pStatus
 
-                                                               WHERE IdUser = @pIdUser";
+                                                               WHERE Id = @pIdUser";
                 #endregion
 
                 #region [Parameters]
@@ -140,7 +140,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
             using (var connection = _configuration.GetConnectionSeguridad)
             {
                 #region [Query]
-                const string procedure = @"DELETE FROM sis.Usuarios WHERE IdUser = @pIdUser";
+                const string procedure = @"DELETE FROM sis.Usuarios WHERE Id = @pIdUser";
                 #endregion
 
                 #region [Parameters]

@@ -21,6 +21,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IConnectionFactory, ConnectionFactory>();
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IGenericRepository, GenericRepository>();
 #endregion
 
 #region [Log]

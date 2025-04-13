@@ -23,14 +23,16 @@ namespace ApiLogin.DDD.Application.Services.User
         private readonly ILogger<UserService> _logger;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
+        private readonly IGenericRepository _genericRepository;
         #endregion
 
         #region [Constructor]
-        public UserService(ILogger<UserService> logger, IMapper mapper, IUserRepository userRepository)
+        public UserService(ILogger<UserService> logger, IMapper mapper, IUserRepository userRepository, IGenericRepository genericRepository)
         {
             _logger = logger;
             _mapper = mapper;
             _userRepository = userRepository;
+            _genericRepository = genericRepository;
         }
         #endregion
 
@@ -99,8 +101,29 @@ namespace ApiLogin.DDD.Application.Services.User
 
             try
             {
+                #region [Validations]
+                var isValidUserName = await _genericRepository.Exists("Usuarios", "UserName", request.UserName);
+                if (isValidUserName)
+                {
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(0, $"Ya existe el usuario {request.UserName} ,ingrese otro");
+                    return baseResponse;
+                }
+
+                var isValidEmail = await _genericRepository.Exists("Usuarios", "Email", request.Email);
+                if (isValidEmail)
+                {
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(0, $"Ya existe el email {request.Email} ,ingrese otro");
+                    return baseResponse;
+                } 
+                #endregion
+
+                //Set
+                request.Password = PasswordHasher.HashPassword(request.Password);
+
+                // Mapper request
                 var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
 
+                // Response
                 var response = await _userRepository.AddUser(mapperRequest);
 
                 if (response > 0)
@@ -123,8 +146,13 @@ namespace ApiLogin.DDD.Application.Services.User
 
             try
             {
+                //Set
+                request.Password = PasswordHasher.HashPassword(request.Password);
+
+                //Mapper
                 var mapperRequest = _mapper.Map<UpdateUserRequestEntities>(request);
 
+                //Response
                 var response = await _userRepository.UpdateUser(mapperRequest);
 
                 if (response > 0)
