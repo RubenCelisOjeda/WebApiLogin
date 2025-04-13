@@ -118,7 +118,7 @@ namespace ApiLogin.DDD.Application.Services.User
                 #endregion
 
                 //Set
-                request.Password = PasswordHasher.HashPassword(request.Password);
+                request.Password = MetGlo.HashPassword(request.Password);
 
                 // Mapper request
                 var mapperRequest = _mapper.Map<AddUserRequestEntities>(request);
@@ -146,8 +146,24 @@ namespace ApiLogin.DDD.Application.Services.User
 
             try
             {
+                #region [Validations]
+                var isValidUserName = await _genericRepository.Exists("Usuarios", "UserName", request.UserName, request.IdUser);
+                if (!isValidUserName)
+                {
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(0, $"El usuario {request.UserName} mo se puede actualizar");
+                    return baseResponse;
+                }
+
+                var isValidEmail = await _genericRepository.Exists("Usuarios", "Email", request.Email, request.IdUser);
+                if (!isValidEmail)
+                {
+                    baseResponse = BaseResponse<int>.BaseResponseWarning(0, $"El email {request.Email} no se puede actualizar");
+                    return baseResponse;
+                }
+                #endregion
+
                 //Set
-                request.Password = PasswordHasher.HashPassword(request.Password);
+                request.Password = MetGlo.HashPassword(request.Password);
 
                 //Mapper
                 var mapperRequest = _mapper.Map<UpdateUserRequestEntities>(request);
@@ -175,8 +191,10 @@ namespace ApiLogin.DDD.Application.Services.User
 
             try
             {
+                //Mapper
                 var mapperRequest = _mapper.Map<DeleteUserRequestEntities>(request);
 
+                //Response
                 var response = await _userRepository.DeleteUser(mapperRequest);
 
                 if (response > 0)

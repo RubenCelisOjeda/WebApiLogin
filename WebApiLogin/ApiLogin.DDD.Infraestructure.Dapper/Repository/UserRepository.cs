@@ -110,7 +110,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
             {
                 #region [Query]
                 const string procedure = @"UPDATE sis.Usuarios SET UserName = @pUserName,
-                                                                   Password = @pEmail,
+                                                                   Password = @pPassword,
                                                                    DateModify = @pDateModify,
                                                                    Status = @pStatus
 
@@ -123,6 +123,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                     pIdUser = request.IdUser,
                     pUserName = request.UserName,
                     pPassword = request.Password,
+                    pDateModify = request.DateModify,
                     pEmail = request.Email,
                     pStatus = request.Status
                 });
