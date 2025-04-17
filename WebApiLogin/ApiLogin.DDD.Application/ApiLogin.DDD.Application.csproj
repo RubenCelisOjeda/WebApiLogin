@@ -16,4 +16,9 @@
     <ProjectReference Include="..\ApiLogin.DDD.Transversal\ApiLogin.DDD.Transversal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\Auth\" />
+    <Folder Include="Services\Auth\" />
+  </ItemGroup>
+
 </Project>

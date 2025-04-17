@@ -5,14 +5,13 @@ using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
 using ApiLogin.DDD.Domain.Entities.User.Request.UpdateUser;
 using ApiLogin.DDD.Domain.Entities.User.Response.GetAllUser;
 using ApiLogin.DDD.Domain.Entities.User.Response.GetUser;
-using ApiLogin.DDD.Domain.Repository;
 using ApiLogin.DDD.Infraestructure.Configuration.Connection;
 using Dapper;
 using System.Data;
 
 namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : AuthRepository
     {
         #region [Variables]
         private readonly IConnectionFactory _configuration;
