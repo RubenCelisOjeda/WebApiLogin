@@ -1,5 +1,7 @@
-﻿using ApiLogin.DDD.Application.Dto.User.Request.GetUser;
-using ApiLogin.DDD.Application.Services.User;
+﻿using ApiLogin.DDD.Application.Dto.Auth.ExistsCodeEmail.Request;
+using ApiLogin.DDD.Application.Dto.Auth.ExistsEmail.Request;
+using ApiLogin.DDD.Application.Dto.Auth.SendCodeEmail.Request;
+using ApiLogin.DDD.Application.Services.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiLogin.Controllers
@@ -9,23 +11,41 @@ namespace ApiLogin.Controllers
     public class AuthController : BaseController
     {
         #region [Variables]
-        private readonly IUserService _userService;
+        private readonly IAuthService _authService;
         #endregion
 
         #region [Constructor]
-        public AuthController(IUserService userService)
+
+        public AuthController(IAuthService authService)
         {
-            _userService = userService;
+            _authService = authService;
         }
+
         #endregion
 
         #region [Apis]
 
         [HttpPost]
-        [Route("RecoveryPassword")]
-        public async Task<IActionResult> RecoveryPassword([FromBody] GetUserRequestDto request)
+        [Route("SendCodeEmail")]
+        public async Task<IActionResult> SendCodeEmail([FromBody] SendCodeEmailRequestDto request)
         {
-            var response = await _userService.GetUser(request);
+            var response = await _authService.GetUser(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("ExistsCodeEmail")]
+        public async Task<IActionResult> ExistsCodeEmail([FromBody] ExistsCodeEmailRequestDto request)
+        {
+            var response = await _authService.GetUser(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("ExistsEmail")]
+        public async Task<IActionResult> ExistsEmail([FromBody] ExistsEmailRequestDto request)
+        {
+            var response = await _authService.GetUser(request);
             return Ok(response);
         }
 
