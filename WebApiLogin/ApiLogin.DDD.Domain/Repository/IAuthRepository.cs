@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Domain.Repository
+﻿namespace ApiLogin.Domain.Repository
 {
     public interface IAuthRepository
     {

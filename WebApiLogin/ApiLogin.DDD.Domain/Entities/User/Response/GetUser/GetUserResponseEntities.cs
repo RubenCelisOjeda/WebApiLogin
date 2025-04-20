@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Domain.Entities.User.Response.GetUser
+﻿namespace ApiLogin.Domain.Entities.User.Response.GetUser
 {
     public class GetUserResponseEntities
     {

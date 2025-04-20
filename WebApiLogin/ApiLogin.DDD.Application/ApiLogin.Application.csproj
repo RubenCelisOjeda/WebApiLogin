@@ -12,8 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiLogin.DDD.Domain\ApiLogin.DDD.Domain.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Domain\ApiLogin.Domain.csproj" />
     <ProjectReference Include="..\ApiLogin.DDD.Transversal\ApiLogin.DDD.Transversal.csproj" />
+    <ProjectReference Include="..\ApiLogin.Infraestructure.Dapper.ExternalService.Smtp\ApiLogin.Infraestructure.Dapper.ExternalService.Smtp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dto\RecoveryPassword\" />
   </ItemGroup>
 
 </Project>

@@ -1,16 +1,16 @@
-﻿using ApiLogin.DDD.Domain.Entities.User.Request.AddUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.DeleteUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.UpdateUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetUser;
-using ApiLogin.DDD.Domain.Repository;
-using ApiLogin.DDD.Infraestructure.Configuration.Connection;
+﻿using ApiLogin.Domain.Entities.User.Request.AddUser;
+using ApiLogin.Domain.Entities.User.Request.DeleteUser;
+using ApiLogin.Domain.Entities.User.Request.GetAllUser;
+using ApiLogin.Domain.Entities.User.Request.GetUser;
+using ApiLogin.Domain.Entities.User.Request.UpdateUser;
+using ApiLogin.Domain.Entities.User.Response.GetAllUser;
+using ApiLogin.Domain.Entities.User.Response.GetUser;
+using ApiLogin.Domain.Repository;
+using ApiLogin.Infraestructure.Configuration.Connection;
 using Dapper;
 using System.Data;
 
-namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
+namespace ApiLogin.Infraestructure.Dapper.Repository
 {
     public class UserRepository : IUserRepository
     {
@@ -66,7 +66,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                 var parameters = new DynamicParameters(new
                 {
                     Offset = (request.PageNumber - 1) * request.PageSize,
-                    PageSize = request.PageSize
+                    request.PageSize
                 });
                 #endregion
 

@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Domain.Entities.User.Request.AddUser
+﻿namespace ApiLogin.Domain.Entities.User.Request.AddUser
 {
     public class AddUserRequestEntities
     {

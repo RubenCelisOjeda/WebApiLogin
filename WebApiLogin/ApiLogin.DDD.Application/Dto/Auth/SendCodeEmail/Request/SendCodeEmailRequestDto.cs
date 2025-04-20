@@ -1,7 +1,7 @@
-﻿namespace ApiLogin.DDD.Application.Dto.Auth.SendCodeEmail.Request
+﻿namespace ApiLogin.Application.Dto.Auth.SendCodeEmail.Request
 {
     public class SendCodeEmailRequestDto
     {
-
+        public string? Email { get; set; }
     }
 }

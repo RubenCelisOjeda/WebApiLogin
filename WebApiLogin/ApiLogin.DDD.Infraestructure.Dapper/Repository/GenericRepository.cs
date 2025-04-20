@@ -1,11 +1,9 @@
-﻿using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetUser;
-using ApiLogin.DDD.Domain.Repository;
-using ApiLogin.DDD.Infraestructure.Configuration.Connection;
+﻿using ApiLogin.Domain.Repository;
+using ApiLogin.Infraestructure.Configuration.Connection;
 using Dapper;
 using System.Data;
 
-namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
+namespace ApiLogin.Infraestructure.Dapper.Repository
 {
     public class GenericRepository : IGenericRepository
     {
@@ -32,7 +30,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                 #region [Parameters]
                 var parameters = new DynamicParameters(new
                 {
-                    pValue = pValue
+                    pValue
                 });
                 #endregion
 
@@ -43,7 +41,7 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
             }
         }
 
-        public async Task<bool> Exists(string pTableName, string pFieldName, object pValue,int pIdUser)
+        public async Task<bool> Exists(string pTableName, string pFieldName, object pValue, int pIdUser)
         {
             using (var connection = _configuration.GetConnectionSeguridad)
             {
@@ -54,8 +52,8 @@ namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
                 #region [Parameters]
                 var parameters = new DynamicParameters(new
                 {
-                    pValue = pValue,
-                    pIdUser = pIdUser
+                    pValue,
+                    pIdUser
                 });
                 #endregion
 

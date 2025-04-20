@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ApiLogin.DDD.Infraestructure.Configuration.Connection
+namespace ApiLogin.Infraestructure.Configuration.Connection
 {
     public class ConnectionFactory : IConnectionFactory
     {

@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Application.Dto.Auth.ExistsEmail.Request
+﻿namespace ApiLogin.Application.Dto.Auth.ExistsEmail.Request
 {
     public class ExistsEmailRequestDto
     {

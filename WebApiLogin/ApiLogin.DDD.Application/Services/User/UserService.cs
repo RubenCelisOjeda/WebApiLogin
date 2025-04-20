@@ -1,21 +1,21 @@
-﻿using ApiLogin.DDD.Application.Dto.User.Request.AddUser;
-using ApiLogin.DDD.Application.Dto.User.Request.DeleteUser;
-using ApiLogin.DDD.Application.Dto.User.Request.GetAllUser;
-using ApiLogin.DDD.Application.Dto.User.Request.GetUser;
-using ApiLogin.DDD.Application.Dto.User.Request.UpdateUser;
-using ApiLogin.DDD.Application.Dto.User.Response.Base.GetAllUser;
-using ApiLogin.DDD.Application.Dto.User.Response.Base.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.AddUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.DeleteUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.UpdateUser;
-using ApiLogin.DDD.Domain.Repository;
+﻿using ApiLogin.Application.Dto.User.Request.AddUser;
+using ApiLogin.Application.Dto.User.Request.DeleteUser;
+using ApiLogin.Application.Dto.User.Request.GetAllUser;
+using ApiLogin.Application.Dto.User.Request.GetUser;
+using ApiLogin.Application.Dto.User.Request.UpdateUser;
+using ApiLogin.Application.Dto.User.Response.Base.GetAllUser;
+using ApiLogin.Application.Dto.User.Response.Base.GetUser;
 using ApiLogin.DDD.Transversal.Utils;
+using ApiLogin.Domain.Entities.User.Request.AddUser;
+using ApiLogin.Domain.Entities.User.Request.DeleteUser;
+using ApiLogin.Domain.Entities.User.Request.GetAllUser;
+using ApiLogin.Domain.Entities.User.Request.GetUser;
+using ApiLogin.Domain.Entities.User.Request.UpdateUser;
+using ApiLogin.Domain.Repository;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 
-namespace ApiLogin.DDD.Application.Services.User
+namespace ApiLogin.Application.Services.User
 {
     public class UserService : IUserService
     {
@@ -114,7 +114,7 @@ namespace ApiLogin.DDD.Application.Services.User
                 {
                     baseResponse = BaseResponse<int>.BaseResponseWarning(0, $"Ya existe el email {request.Email} ,ingrese otro");
                     return baseResponse;
-                } 
+                }
                 #endregion
 
                 //Set

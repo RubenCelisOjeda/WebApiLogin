@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Application.Dto.Base.Request
+﻿namespace ApiLogin.Application.Dto.Base.Request
 {
     public class BaseUpdaateRequestDto
     {

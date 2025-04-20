@@ -1,8 +1,10 @@
-using ApiLogin.DDD.Application.Services.User;
-using ApiLogin.DDD.Domain.Repository;
-using ApiLogin.DDD.Infraestructure.Configuration.Connection;
-using ApiLogin.DDD.Infraestructure.Dapper.Repository;
+using ApiLogin.Application.Services.RecoveryPassword;
+using ApiLogin.Application.Services.User;
 using ApiLogin.DDD.Transversal.AutoMapper.AutoMapper;
+using ApiLogin.Domain.Repository;
+using ApiLogin.Infraestructure.Configuration.Connection;
+using ApiLogin.Infraestructure.Dapper.ExternalService.Smtp.Email;
+using ApiLogin.Infraestructure.Dapper.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -22,6 +24,9 @@ builder.Services.AddSingleton<IConnectionFactory, ConnectionFactory>();
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IGenericRepository, GenericRepository>();
+builder.Services.AddSingleton<IRecoveryPasswordService, RecoveryPasswordService>();
+builder.Services.AddSingleton<IRecoveryPasswordRepository, RecoveryPasswordRepository>();
+builder.Services.AddSingleton<IEmailService, EmailService>();
 #endregion
 
 #region [Log]

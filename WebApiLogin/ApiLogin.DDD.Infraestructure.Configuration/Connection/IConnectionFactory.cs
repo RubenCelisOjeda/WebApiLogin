@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace ApiLogin.DDD.Infraestructure.Configuration.Connection
+namespace ApiLogin.Infraestructure.Configuration.Connection
 {
     public interface IConnectionFactory
     {

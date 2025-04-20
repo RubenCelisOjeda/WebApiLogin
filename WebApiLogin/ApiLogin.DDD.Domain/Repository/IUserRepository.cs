@@ -1,12 +1,12 @@
-﻿using ApiLogin.DDD.Domain.Entities.User.Request.AddUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.DeleteUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.UpdateUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetUser;
+﻿using ApiLogin.Domain.Entities.User.Request.AddUser;
+using ApiLogin.Domain.Entities.User.Request.DeleteUser;
+using ApiLogin.Domain.Entities.User.Request.GetAllUser;
+using ApiLogin.Domain.Entities.User.Request.GetUser;
+using ApiLogin.Domain.Entities.User.Request.UpdateUser;
+using ApiLogin.Domain.Entities.User.Response.GetAllUser;
+using ApiLogin.Domain.Entities.User.Response.GetUser;
 
-namespace ApiLogin.DDD.Domain.Repository
+namespace ApiLogin.Domain.Repository
 {
     public interface IUserRepository
     {

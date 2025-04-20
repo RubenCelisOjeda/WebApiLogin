@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Domain.Entities.Base.Request
+﻿namespace ApiLogin.Domain.Entities.Base.Request
 {
     public class BaseUpdaateRequestEntities
     {

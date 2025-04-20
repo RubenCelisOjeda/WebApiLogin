@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <Folder Include="Entities\Auth\" />
+    <Folder Include="Entities\RecoveryPassword\Response\ExistsCodeEmail\" />
+    <Folder Include="Entities\RecoveryPassword\Response\ExistsEmail\" />
+    <Folder Include="Entities\RecoveryPassword\Response\SendCodeEmail\" />
     <Folder Include="Entities\User\Request\Base\" />
   </ItemGroup>
 

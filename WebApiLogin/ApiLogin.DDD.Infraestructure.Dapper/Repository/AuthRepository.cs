@@ -1,6 +1,6 @@
-﻿using ApiLogin.DDD.Domain.Repository;
+﻿using ApiLogin.Domain.Repository;
 
-namespace ApiLogin.DDD.Infraestructure.Dapper.Repository
+namespace ApiLogin.Infraestructure.Dapper.Repository
 {
     public class AuthRepository : IAuthRepository
     {

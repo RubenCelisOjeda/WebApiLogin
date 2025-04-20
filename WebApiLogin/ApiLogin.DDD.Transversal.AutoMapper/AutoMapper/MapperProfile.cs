@@ -1,17 +1,19 @@
-﻿using ApiLogin.DDD.Application.Dto.User.Request.AddUser;
-using ApiLogin.DDD.Application.Dto.User.Request.DeleteUser;
-using ApiLogin.DDD.Application.Dto.User.Request.GetAllUser;
-using ApiLogin.DDD.Application.Dto.User.Request.GetUser;
-using ApiLogin.DDD.Application.Dto.User.Request.UpdateUser;
-using ApiLogin.DDD.Application.Dto.User.Response.Base.GetAllUser;
-using ApiLogin.DDD.Application.Dto.User.Response.Base.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.AddUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.DeleteUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.GetUser;
-using ApiLogin.DDD.Domain.Entities.User.Request.UpdateUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetAllUser;
-using ApiLogin.DDD.Domain.Entities.User.Response.GetUser;
+﻿using ApiLogin.Application.Dto.Auth.SendCodeEmail.Request;
+using ApiLogin.Application.Dto.User.Request.AddUser;
+using ApiLogin.Application.Dto.User.Request.DeleteUser;
+using ApiLogin.Application.Dto.User.Request.GetAllUser;
+using ApiLogin.Application.Dto.User.Request.GetUser;
+using ApiLogin.Application.Dto.User.Request.UpdateUser;
+using ApiLogin.Application.Dto.User.Response.Base.GetAllUser;
+using ApiLogin.Application.Dto.User.Response.Base.GetUser;
+using ApiLogin.Domain.Entities.RecoveryPassword.Request.SendCodeEmail;
+using ApiLogin.Domain.Entities.User.Request.AddUser;
+using ApiLogin.Domain.Entities.User.Request.DeleteUser;
+using ApiLogin.Domain.Entities.User.Request.GetAllUser;
+using ApiLogin.Domain.Entities.User.Request.GetUser;
+using ApiLogin.Domain.Entities.User.Request.UpdateUser;
+using ApiLogin.Domain.Entities.User.Response.GetAllUser;
+using ApiLogin.Domain.Entities.User.Response.GetUser;
 using AutoMapper;
 
 namespace ApiLogin.DDD.Transversal.AutoMapper.AutoMapper
@@ -45,6 +47,19 @@ namespace ApiLogin.DDD.Transversal.AutoMapper.AutoMapper
 
             //GetAll
             CreateMap<GetAllUserResponseEntities, GetAllUserResponseDto>();
+            #endregion
+
+            #endregion
+
+            #region [RecoveryPassword]
+
+            #region [Request]
+            //Add
+            CreateMap<SendCodeEmailRequestDto, SendCodeEmailRequestEntities>();
+            #endregion
+
+            #region [Response]
+
             #endregion
 
             #endregion

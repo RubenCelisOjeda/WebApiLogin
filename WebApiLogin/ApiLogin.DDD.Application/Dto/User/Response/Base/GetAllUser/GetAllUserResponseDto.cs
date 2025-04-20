@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Application.Dto.User.Response.Base.GetAllUser
+﻿namespace ApiLogin.Application.Dto.User.Response.Base.GetAllUser
 {
     public class GetAllUserResponseDto
     {

@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Domain.Entities.User.Request.DeleteUser
+﻿namespace ApiLogin.Domain.Entities.User.Request.DeleteUser
 {
     public class DeleteUserRequestEntities
     {

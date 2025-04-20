@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiLogin.DDD.Application\ApiLogin.DDD.Application.csproj" />
-    <ProjectReference Include="..\ApiLogin.DDD.Infraestructure.Configuration\ApiLogin.DDD.Infraestructure.Configuration.csproj" />
-    <ProjectReference Include="..\ApiLogin.DDD.Infraestructure.Dapper\ApiLogin.DDD.Infraestructure.Dapper.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Application\ApiLogin.Application.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Infraestructure.Configuration\ApiLogin.Infraestructure.Configuration.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Infraestructure.Dapper\ApiLogin.Infraestructure.Dapper.csproj" />
     <ProjectReference Include="..\ApiLogin.DDD.Transversal.AutoMapper\ApiLogin.DDD.Transversal.AutoMapper.csproj" />
     <ProjectReference Include="..\ApiLogin.DDD.Transversal\ApiLogin.DDD.Transversal.csproj" />
   </ItemGroup>

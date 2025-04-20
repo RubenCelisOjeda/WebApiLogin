@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Application.Dto.User.Request.AddUser
+﻿namespace ApiLogin.Application.Dto.User.Request.AddUser
 {
     public class AddUserRequestDto
     {

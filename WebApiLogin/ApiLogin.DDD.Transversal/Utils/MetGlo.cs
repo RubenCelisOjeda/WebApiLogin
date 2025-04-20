@@ -23,7 +23,7 @@ namespace ApiLogin.DDD.Transversal.Utils
             try
             {
                 new MailAddress(pEmail);
-                correcto = false;
+                correcto = true;
             }
             catch (Exception ex)
             {
@@ -106,6 +106,11 @@ namespace ApiLogin.DDD.Transversal.Utils
             }
 
             return Encoding.UTF8.GetString(ms.ToArray());
+        }
+
+        public static string CodeGeneratedRandom()
+        {
+            return Random.Shared.Next(100000, 999999).ToString();
         }
 
         #endregion

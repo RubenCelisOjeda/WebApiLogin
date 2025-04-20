@@ -1,4 +1,4 @@
-﻿namespace ApiLogin.DDD.Application.Dto.User.Request.DeleteUser
+﻿namespace ApiLogin.Application.Dto.User.Request.DeleteUser
 {
     public class DeleteUserRequestDto
     {

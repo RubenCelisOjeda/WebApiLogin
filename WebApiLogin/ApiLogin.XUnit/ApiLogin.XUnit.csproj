@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiLogin.DDD.Application\ApiLogin.DDD.Application.csproj" />
+    <ProjectReference Include="..\ApiLogin.DDD.Application\ApiLogin.Application.csproj" />
     <ProjectReference Include="..\WebApiLogin\ApiLogin.csproj" />
   </ItemGroup>
 
