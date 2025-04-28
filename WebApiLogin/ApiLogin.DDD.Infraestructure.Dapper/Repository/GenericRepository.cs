@@ -1,4 +1,5 @@
-﻿using ApiLogin.Domain.Repository;
+﻿using ApiLogin.Domain.Entities.Generic.Request.AddSession;
+using ApiLogin.Domain.Repository;
 using ApiLogin.Infraestructure.Configuration.Connection;
 using Dapper;
 using System.Data;
@@ -60,6 +61,30 @@ namespace ApiLogin.Infraestructure.Dapper.Repository
                 #region [Execute]
                 var response = await connection.ExecuteScalarAsync<int>(query, parameters, commandType: CommandType.Text);
                 return response > 0;
+                #endregion
+            }
+        }
+
+        public async Task<int> AddSession(AddSessionRequestEntities request)
+        {
+            using (var connection = _configuration.GetConnectionSeguridad)
+            {
+                #region [Query]
+                const string query = @"INSERT INTO sis.Sessions (Email,CodeGenerated,DateCreated,DateModify,Status)
+                                                         VALUES (@pEmail,@pCodeGenerated,GETDATE(),NULL,1)";
+                #endregion
+
+                #region [Parameters]
+                var parameters = new DynamicParameters(new
+                {
+                    pEmail = request.Email,
+                    pCodeGenerated = request.CodeGenerated
+                });
+                #endregion
+
+                #region [Execute]
+                var response = await connection.ExecuteScalarAsync<int>(query, parameters, commandType: CommandType.Text);
+                return response;
                 #endregion
             }
         }

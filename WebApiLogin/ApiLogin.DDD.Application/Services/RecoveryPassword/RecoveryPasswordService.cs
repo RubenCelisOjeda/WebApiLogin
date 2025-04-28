@@ -1,7 +1,9 @@
 ﻿using ApiLogin.Application.Dto.Auth.ExistsCodeEmail.Request;
 using ApiLogin.Application.Dto.Auth.ExistsEmail.Request;
 using ApiLogin.Application.Dto.Auth.SendCodeEmail.Request;
+using ApiLogin.DDD.Transversal.Common;
 using ApiLogin.DDD.Transversal.Utils;
+using ApiLogin.Domain.Entities.RecoveryPassword.Request.ExistsCodeEmail;
 using ApiLogin.Domain.Entities.RecoveryPassword.Request.SendCodeEmail;
 using ApiLogin.Domain.Repository;
 using ApiLogin.Infraestructure.Dapper.ExternalService.Smtp.Email;
@@ -80,19 +82,19 @@ namespace ApiLogin.Application.Services.RecoveryPassword
 
             try
             {
-                ////1 mapper request
-                //var mapperRequest = _mapper.Map<GetAllUserRequestEntities>(request);
+                //1 mapper request
+                var mapperRequest = _mapper.Map<ExistsCodeEmailRequestEntities>(request);
 
-                ////2 response
-                //var response = await _recoveryPasswordRepository.ExistsCodeEmail(mapperRequest);
+                //2 response
+                var response = await _genericRepository.Exists("Sessions", "CodeGenereted", request.CodeGenerated);
 
-                ////3 mapper response
-                //var mapperResponse = _mapper.Map<bool>(response);
+                //3 mapper response
+                var mapperResponse = _mapper.Map<bool>(response);
 
-                //if (response.Count() > 0)
-                //    baseResponse = BaseResponse<bool>.BaseResponseSuccess(mapperResponse);
-                //else
-                //    baseResponse = BaseResponse<bool>.BaseResponseWarning(mapperResponse);
+                if (response)
+                    baseResponse = BaseResponse<bool>.BaseResponseSuccess(mapperResponse, Constant.ResponseMessage.CodeValid);
+                else
+                    baseResponse = BaseResponse<bool>.BaseResponseWarning(mapperResponse,Constant.ResponseMessage.CodeNoValid);
             }
             catch (Exception ex)
             {

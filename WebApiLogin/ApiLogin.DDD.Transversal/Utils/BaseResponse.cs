@@ -15,12 +15,12 @@ namespace ApiLogin.DDD.Transversal.Utils
         #endregion
 
         #region [BaseResponse]
-        public static BaseResponse<T> BaseResponseSuccess(T pData)
+        public static BaseResponse<T> BaseResponseSuccess(T pData, string message = "")
         {
             var baseResponse = new BaseResponse<T>()
             {
                 CodigoError = Constant.ResponseCode.SuccessCode,
-                Message = Constant.ResponseMessage.SuccessMessage,
+                Message = (message == string.Empty ? Constant.ResponseMessage.SuccessMessage : message),
                 Data = pData
             };
             return baseResponse;

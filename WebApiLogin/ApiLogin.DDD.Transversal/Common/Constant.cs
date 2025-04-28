@@ -7,6 +7,9 @@
             public const string SuccessMessage = "Se ejecuto correctamente.";
             public const string WarningMessage = "No se pudo ejecutar la consulta.";
             public const string ErrorMessage = "Error al ejecutar la consulta.";
+
+            public const string CodeNoValid = "Codigo ingresado es incorrecto";
+            public const string CodeValid = "Codigo ingresado correctamente";
         }
 
         public struct ResponseCode
