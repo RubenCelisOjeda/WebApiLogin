@@ -42,6 +42,28 @@ namespace ApiLogin.Infraestructure.Dapper.Repository
             }
         }
 
+        public async Task<string> GetField(string pTableName, string pFieldName, object pValue,string pColumnName)
+        {
+            using (var connection = _configuration.GetConnectionSeguridad)
+            {
+                #region [Query]
+                string query = string.Format("SELECT {0} FROM sis.{1} WHERE {2} = @pValue", pColumnName,pTableName, pFieldName);
+                #endregion
+
+                #region [Parameters]
+                var parameters = new DynamicParameters(new
+                {
+                    pValue
+                });
+                #endregion
+
+                #region [Execute]
+                var response = await connection.QueryFirstOrDefaultAsync<string>(query, parameters, commandType: CommandType.Text);
+                return response;
+                #endregion
+            }
+        }
+
         public async Task<bool> Exists(string pTableName, string pFieldName, object pValue, int pIdUser)
         {
             using (var connection = _configuration.GetConnectionSeguridad)

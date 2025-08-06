@@ -1,3 +1,4 @@
+using ApiLogin.Application.Services.Auth;
 using ApiLogin.Application.Services.RecoveryPassword;
 using ApiLogin.Application.Services.User;
 using ApiLogin.DDD.Transversal.AutoMapper.AutoMapper;
@@ -27,6 +28,8 @@ builder.Services.AddSingleton<IGenericRepository, GenericRepository>();
 builder.Services.AddSingleton<IRecoveryPasswordService, RecoveryPasswordService>();
 builder.Services.AddSingleton<IRecoveryPasswordRepository, RecoveryPasswordRepository>();
 builder.Services.AddSingleton<IEmailService, EmailService>();
+builder.Services.AddSingleton<IAuthService, AuthService>();
+builder.Services.AddSingleton<IAuthRepository, AuthRepository>();
 #endregion
 
 #region [Log]
@@ -115,6 +118,11 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
 {
     app.UseSwagger();
     app.UseSwaggerUI();

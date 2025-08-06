@@ -10,6 +10,7 @@
 
             public const string CodeNoValid = "Codigo ingresado es incorrecto";
             public const string CodeValid = "Codigo ingresado correctamente";
+            public const string LoginInvalid = "Email y/o contraseña incorrecta.";
         }
 
         public struct ResponseCode

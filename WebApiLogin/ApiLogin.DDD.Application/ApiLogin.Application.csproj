@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Dto\Auth\Login\Response\" />
     <Folder Include="Dto\RecoveryPassword\" />
   </ItemGroup>
 

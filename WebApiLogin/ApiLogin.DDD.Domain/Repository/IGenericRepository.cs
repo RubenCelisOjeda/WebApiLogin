@@ -6,6 +6,7 @@ namespace ApiLogin.Domain.Repository
     {
         public Task<bool> Exists(string pTableName, string pFieldName, object pValue);
         public Task<bool> Exists(string pTableName, string pFieldName, object pValue,int IdUser);
+        public Task<string> GetField(string pTableName, string pFieldName, object pValue, string pColumnName);
         public Task<int> AddSession(AddSessionRequestEntities request);
     }
 }
